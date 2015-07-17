@@ -1,12 +1,34 @@
 # Author: Jeremy Boyd (kenyonboyd@gmail.com)
 # Summary: Downloads CHILDES corpora, pulls out all adjective uses and puts them in a dataframe for later analysis.
 
-# DATE: January 12, 2010
-# SUMMARY: Finds all adjectives in CHAT-formatted corpora and organizes them into a dataframe.
-# TODO: Add code to calculate numeric age from age line. For Hall corpus hardcode in 4;9 (57 months). For others, drop '.' if age string ends in '.'. Then split on ';' to get years and months separated. Then split on '.' to get months and days separated (for ages written years, months, days, e.g. 4;5.27 for 4 years, 5 months, 27 days). Can calculate overall age in years based on years, months and days.
 
-# To run this file as a script:
-# > source("a-adj corpus05.R", echo = FALSE)
+# Corpora: brown, hall, carterette, macwhinney, gleason, kuczaj, bliss, warren.
+
+
+
+################ Need to turn this into a function to take a list of CHILDES corpora and automatically download and unzip them.
+## Should remove zip directory when done.
+
+# Create directory to put zip files in.
+zip_dir <- "~/Documents/studies/A-ADJ/AP/get_adj_uses/zip/"
+dir.create(zip_dir)
+    
+# Download zip
+download.file("http://childes.psy.cmu.edu/data/Eng-NA-MOR/Brown.zip", paste(zip_dir, "Brown.zip"))
+
+# Create directory for unzipped corpus files.
+corpus_dir <- "~/Documents/studies/A-ADJ/AP/get_adj_uses/corpora/"
+dir.create(corpus_dir)
+
+# Unzip
+unzip(zipfile = paste(zip_dir, "Brown.zip"), exdir = corpus_dir)
+
+
+
+
+
+
+
 
 # Set working directory
 setwd("/Users/boyd/Documents/studies/A-ADJ/AP/get_adj_uses")
